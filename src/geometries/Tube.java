@@ -5,7 +5,7 @@ import primitives.*;
 /**
  * Represents a tube in 3D space.
  */
-public class Tube extends RadialGeometry{
+public class Tube extends RadialGeometry {
 
     /**
      * The axis ray of the tube.
@@ -15,7 +15,7 @@ public class Tube extends RadialGeometry{
     /**
      * Constructs a tube with a given radius and axis ray.
      *
-     * @param radius The radius of the tube.
+     * @param radius  The radius of the tube.
      * @param axisRay The axis ray of the tube.
      */
     public Tube(double radius, Ray axisRay) {

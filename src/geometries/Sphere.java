@@ -6,7 +6,7 @@ import primitives.Vector;
 /**
  * Represents a sphere in 3D space.
  */
-public class Sphere extends RadialGeometry{
+public class Sphere extends RadialGeometry {
 
     /**
      * The center point of the sphere.

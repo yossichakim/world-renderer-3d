@@ -33,7 +33,7 @@ public class Plane implements Geometry {
     /**
      * Constructs a plane from a point and a normal vector.
      *
-     * @param p The point on the plane.
+     * @param p      The point on the plane.
      * @param normal The normal vector to the plane.
      */
     public Plane(Point p, Vector normal) {

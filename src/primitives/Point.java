@@ -4,7 +4,7 @@ package primitives;
  * Represents a point in 3D space.
  */
 public class Point {
-    final Double3 xyz;
+    protected final Double3 xyz;
 
     /**
      * Constructs a new point with the specified x, y, and z coordinates.
