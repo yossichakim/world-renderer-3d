@@ -1,7 +1,7 @@
 package geometries;
 
-import primitives.Point;
-import primitives.Vector;
+import primitives.*;
+
 
 /**
  The Geometry interface represents a geometric shape or object in 3D space.
