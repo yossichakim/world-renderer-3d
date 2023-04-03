@@ -21,26 +21,15 @@ public class Point {
         this.xyz = xyz;
     }
 
-    /**
-     * Determines whether this point is equal to the specified object.
-     *
-     * @param obj the object to compare this point with
-     * @return true if the object is a point and has the same coordinates as this point, false otherwise
-     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         return (obj instanceof Point other) && this.xyz.equals(other.xyz);
     }
 
-    /**
-     * Returns a string representation of this point in the format "(x, y, z)".
-     *
-     * @return a string representation of this point
-     */
     @Override
     public String toString() {
-        return xyz.toString();
+        return "" + xyz;
     }
 
     /**
@@ -50,8 +39,7 @@ public class Point {
      * @return the vector from this point to the specified point
      */
     public Vector subtract(Point other) {
-        Double3 diff = this.xyz.subtract(other.xyz);
-        return new Vector(diff.d1, diff.d2, diff.d3);
+        return new Vector(this.xyz.subtract(other.xyz));
     }
 
     /**
@@ -61,8 +49,7 @@ public class Point {
      * @return the point obtained by adding the specified vector to this point
      */
     public Point add(Vector vec) {
-        Double3 newCoords = xyz.add(vec.xyz);
-        return new Point(newCoords);
+        return new Point(xyz.add(vec.xyz));
     }
 
     /**
@@ -72,9 +59,10 @@ public class Point {
      * @return the square of the distance from this point to the specified point
      */
     public double distanceSquared(Point other) {
-        return (this.xyz.d1 - other.xyz.d1) * (this.xyz.d1 - other.xyz.d1) +
-                (this.xyz.d2 - other.xyz.d2) * (this.xyz.d2 - other.xyz.d2) +
-                (this.xyz.d3 - other.xyz.d3) * (this.xyz.d3 - other.xyz.d3);
+        double dx = this.xyz.d1 - other.xyz.d1;
+        double dy = this.xyz.d2 - other.xyz.d2;
+        double dz = this.xyz.d3 - other.xyz.d3;
+        return dx * dx + dy * dy + dz * dz;
     }
 
     /**

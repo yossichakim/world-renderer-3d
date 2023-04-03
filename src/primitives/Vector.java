@@ -41,8 +41,7 @@ public class Vector extends Point {
      * @return The sum of this vector and the given vector.
      */
     public Vector add(Vector other) {
-        Double3 newCoords = xyz.add(other.xyz);
-        return new Vector(newCoords);
+        return new Vector(xyz.add(other.xyz));
     }
 
     /**
@@ -52,8 +51,7 @@ public class Vector extends Point {
      * @return The product of this vector and the given scalar.
      */
     public Vector scale(double scalar) {
-        Double3 scaledCoords = xyz.scale(scalar);
-        return new Vector(scaledCoords);
+        return new Vector(xyz.scale(scalar));
     }
 
     /**
@@ -103,28 +101,17 @@ public class Vector extends Point {
      * @return A new vector that is the normalized version of this vector.
      */
     public Vector normalize() {
-        double len = length();
-        return scale(1 / len);
+        return scale(1 / length());
     }
 
-    /**
-     * Returns a string representation of this vector.
-     *
-     * @return A string representation of this vector.
-     */
     @Override
     public String toString() {
         return "Vector: " + super.toString();
     }
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     * @param obj The object to compare to this one.
-     * @return True if the other object is "equal to" this one, false otherwise.
-     */
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) return true;
+        return (obj instanceof Vector) && super.equals(obj);
     }
 }
