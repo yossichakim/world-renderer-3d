@@ -21,17 +21,6 @@ public class Point {
         this.xyz = xyz;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        return (obj instanceof Point other) && this.xyz.equals(other.xyz);
-    }
-
-    @Override
-    public String toString() {
-        return "" + xyz;
-    }
-
     /**
      * Computes the vector from this point to the specified point.
      *
@@ -73,6 +62,17 @@ public class Point {
      */
     public double distance(Point other) {
         return Math.sqrt(distanceSquared(other));
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        return (obj instanceof Point other) && this.xyz.equals(other.xyz);
+    }
+
+    @Override
+    public String toString() {
+        return "" + xyz;
     }
 
 }

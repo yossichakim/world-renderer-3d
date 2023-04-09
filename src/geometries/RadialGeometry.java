@@ -8,7 +8,7 @@ public abstract class RadialGeometry implements Geometry {
     /**
      * The radius of the radial geometry shape.
      */
-    protected double radius;
+    protected final double radius;
 
     /**
      * Constructs a radial geometry shape with a given radius.

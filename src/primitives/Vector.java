@@ -105,13 +105,13 @@ public class Vector extends Point {
     }
 
     @Override
-    public String toString() {
-        return "Vector: " + super.toString();
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         return (obj instanceof Vector) && super.equals(obj);
+    }
+
+    @Override
+    public String toString() {
+        return "Vector: " + super.toString();
     }
 }
