@@ -18,9 +18,10 @@ public class PointTests {
     @Test
     public void testAdd() {
         Point p1 = new Point(1, 2, 3);
-        Vector v = new Vector(1, 1, 1);
-        Point p2 = p1.add(v);
-        assertEquals(new Point(2, 3, 4), p2, "add() wrong result");
+        Vector v = new Vector(-1, -2, -3);
+
+        assertEquals(new Point(0, 0, 0), p1.add(v),
+                "testAdd() Vector does not work correctly");
     }
 
     /**
@@ -30,8 +31,9 @@ public class PointTests {
     public void testSubtract() {
         Point p1 = new Point(1, 2, 3);
         Point p2 = new Point(2, 3, 4);
-        Vector v = p1.subtract(p2);
-        assertEquals(new Vector(-1, -1, -1), v, "subtract() wrong result");
+
+        assertEquals(new Vector(1, 1, 1),p2.subtract(p1) ,
+                "testSubtract() Point does not work correctly");
     }
 
     // =============== Boundary Values Tests ==================
@@ -44,8 +46,9 @@ public class PointTests {
     public void testDistanceSquared() {
         Point p1 = new Point(1, 2, 3);
         Point p2 = new Point(2, 3, 4);
-        double result = p1.distanceSquared(p2);
-        assertEquals(3.0, result, 0, "distanceSquared() wrong result");
+
+        assertEquals(3.0, p1.distanceSquared(p2),
+                "distanceSquared() wrong result");
     }
 
     /**
@@ -55,7 +58,8 @@ public class PointTests {
     public void testDistance() {
         Point p1 = new Point(1, 2, 3);
         Point p2 = new Point(2, 3, 4);
-        double result = p1.distance(p2);
-        assertEquals(Math.sqrt(3), result, 0, "distance() wrong result");
+
+        assertEquals(Math.sqrt(3), p1.distance(p2),
+                "distance() wrong result");
     }
 }
