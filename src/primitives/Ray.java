@@ -15,12 +15,21 @@ public class Ray {
      */
     private final Vector dir;
 
+    public Vector getDir() {
+        return dir;
+    }
+
+    public Point getP0() {
+        return p0;
+    }
+
     /**
      * Constructs a ray with a given starting point and direction vector.
      *
      * @param p0  the starting point of the ray
      * @param dir the direction vector of the ray
      */
+
     public Ray(Point p0, Vector dir) {
         this.p0 = p0;
         this.dir = dir.normalize();
