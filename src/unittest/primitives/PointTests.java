@@ -6,11 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for primitives.Point class
- * @author Benjamin Machlev and Yossi Chakim
  */
 public class PointTests {
-    // ============ Equivalence Partitions Tests ==============
-    // Test cases that cover the different equivalence partitions
 
     /**
      * Test method for {@link primitives.Point#add(primitives.Vector)}.
@@ -20,6 +17,8 @@ public class PointTests {
         Point p1 = new Point(1, 2, 3);
         Vector v = new Vector(-1, -2, -3);
 
+        // ============ Equivalence Partitions Tests ==============
+        // Test adding a vector to a point
         assertEquals(new Point(0, 0, 0), p1.add(v),
                 "testAdd() Vector does not work correctly");
     }
@@ -32,12 +31,11 @@ public class PointTests {
         Point p1 = new Point(1, 2, 3);
         Point p2 = new Point(2, 3, 4);
 
+        // ============ Equivalence Partitions Tests ==============
+        // Test subtracting two points
         assertEquals(new Vector(1, 1, 1),p2.subtract(p1) ,
                 "testSubtract() Point does not work correctly");
     }
-
-    // =============== Boundary Values Tests ==================
-    // Test cases that cover the boundary values
 
     /**
      * Test method for {@link primitives.Point#distanceSquared(primitives.Point)}.
@@ -47,6 +45,8 @@ public class PointTests {
         Point p1 = new Point(1, 2, 3);
         Point p2 = new Point(2, 3, 4);
 
+        // ============ Equivalence Partitions Tests ==============
+        // Test squared distance between two points
         assertEquals(3.0, p1.distanceSquared(p2),
                 "distanceSquared() wrong result");
     }
@@ -59,6 +59,8 @@ public class PointTests {
         Point p1 = new Point(1, 2, 3);
         Point p2 = new Point(2, 3, 4);
 
+        // ============ Equivalence Partitions Tests ==============
+        // Test distance between two points
         assertEquals(Math.sqrt(3), p1.distance(p2),
                 "distance() wrong result");
     }

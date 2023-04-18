@@ -2,12 +2,20 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for geometries.Triangle class
+ * @author Benjamin Machlev and Yossi Chakim
+ */
 class TriangleTest {
 
+    /**
+     * Test method for {@link geometries.Triangle#Triangle(Point, Point, Point)}  Triangle(geometries.TriangleTest)}.
+     */
     @Test
     void testConstructor() {
         // ============ Equivalence Partitions Tests ==============
@@ -41,11 +49,16 @@ class TriangleTest {
                 ()->new Triangle(new Point(1,0,0),new Point(2,0,0),new Point(3,0,0)),
                 "The constructor don't throw error exception for the three points in the same line");
     }
+
+    /**
+     * Test method for {@link geometries.Triangle#getNormal(Point)}  Triangle(geometries.TriangleTest)}.
+     */
     @Test
     void testGetNormal() {
         Point p1 = new Point(1,1,1);
         Triangle tr = new Triangle(new Point(1,0,0),new Point(0,1,0),new Point(0,0,1));
 
+        // ============ Equivalence Partitions Tests ==============
         assertEquals( new Vector(1,1,1).normalize(),tr.getNormal(p1),
                 "testGetNormal() failed");
     }

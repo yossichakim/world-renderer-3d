@@ -6,8 +6,15 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for geometries.Plane class
+ * @author Benjamin Machlev and Yossi Chakim
+ */
 class PlaneTest {
 
+    /**
+     * Test method for {@link geometries.Plane#Plane(Point, Point, Point)}  Plane(geometries.PlaneTest)}.
+     */
     @Test
     void testConstructor() {
 
@@ -44,19 +51,27 @@ class PlaneTest {
 
     }
 
+    /**
+     * Test method for {@link geometries.Plane#getNormal(Point)}  Plane(geometries.PlaneTest)}.
+     */
     @Test
     void testGetNormalPoint() {
         Point p1 = new Point(1,1,1);
         Plane pl = new Plane(new Point(1,0,0),new Point(0,1,0),new Point(0,0,1));
 
+        // ============ Equivalence Partitions Tests ==============
         assertEquals( new Vector(1,1,1).normalize(),pl.getNormal(p1),
                 "testGetNormalPoint() failed");
     }
 
+    /**
+     * Test method for {@link Plane#getNormal()}  Plane(geometries.PlaneTest)}.
+     */
     @Test
     void testGetNormal() {
         Plane pl = new Plane(new Point(1,0,0),new Point(0,1,0),new Point(0,0,1));
 
+        // ============ Equivalence Partitions Tests ==============
         assertEquals( new Vector(1,1,1).normalize(),pl.getNormal(),
                 "testGetNormal() failed");
     }
