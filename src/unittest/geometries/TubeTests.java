@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for geometries.Tube class
+ *
  * @author Benjamin Machlev and Yossi Chakim
  */
 class TubeTests {
@@ -17,11 +18,11 @@ class TubeTests {
      * Test method for {@link geometries.Tube#Tube(double, Ray)}  Tube(geometries.TubeTest)}.
      */
     @Test
-    void testConstructor(){
+    void testConstructor() {
 
         // ============ Equivalence Partitions Tests ==============
         // TC01: The constructor throw error for nothing
-        assertDoesNotThrow(()->new Tube(0.1,new Ray(new Point(1,1,1),new Vector(1,1,1))),
+        assertDoesNotThrow(() -> new Tube(0.1, new Ray(new Point(1, 1, 1), new Vector(1, 1, 1))),
                 "The constructor throw error for nothing");
     }
 
@@ -40,7 +41,7 @@ class TubeTests {
 
         // =================== Boundary Values Tests ======================
         //TC02: Test when the point is orthogonal to the ray's head goes to the ZERO vector
-        assertThrows(IllegalArgumentException.class, () -> tube.getNormal(new Point(0, 0, 1)),
-                "ZERO vector is not allowed");
+        assertEquals(new Vector(0, 0, 1), tube.getNormal(new Point(0, 0, 1)),
+                "Wrong vector against p0");
     }
 }

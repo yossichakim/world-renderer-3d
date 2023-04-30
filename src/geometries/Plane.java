@@ -11,12 +11,12 @@ public class Plane implements Geometry {
     /**
      * The starting point q0 of the plane.
      */
-     private final Point q0;
+    private final Point q0;
 
     /**
      * The normal vector to the plane.
      */
-     private final Vector normal;
+    private final Vector normal;
 
     /**
      * Constructs a plane from three points.

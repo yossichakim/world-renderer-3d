@@ -33,12 +33,12 @@ public class PointTests {
 
         // ============ Equivalence Partitions Tests ==============
         // TC01:  Test subtracting two points
-        assertEquals(new Vector(1, 1, 1),p2.subtract(p1) ,
+        assertEquals(new Vector(1, 1, 1), p2.subtract(p1),
                 "testSubtract() Point does not work correctly");
 
         // =============== Boundary Values Tests ==================
         // TC02:  Test subtracting the same point
-        assertThrows( IllegalArgumentException.class, ()->p1.subtract(p1),
+        assertThrows(IllegalArgumentException.class, () -> p1.subtract(p1),
                 "testSubtract() subtracting the same point");
     }
 
