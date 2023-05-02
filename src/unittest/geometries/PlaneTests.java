@@ -62,8 +62,13 @@ class PlaneTests {
 
         // ============ Equivalence Partitions Tests =============
         // TC01: Test for a proper result.
-        assertEquals(new Vector(1, 1, 1).normalize(), pl.getNormal(p1),
+        assertEquals(1, pl.getNormal(p1).length(),
                 "testGetNormalPoint() failed");
+
+        // ================= Boundary Values Tests ==================
+        // TC02: Test for a proper result.
+        assertEquals(0, pl.getNormal().dotProduct(new Point(1,0,0).subtract(new Point(0,1,0))), 0.000001,
+                "testGetNormal() failed");
     }
 
     /**
@@ -75,7 +80,12 @@ class PlaneTests {
 
         // ============ Equivalence Partitions Tests ==============
         // TC01: Test for a proper result.
-        assertEquals(new Vector(1, 1, 1).normalize(), pl.getNormal(),
+        assertEquals(1.0, pl.getNormal().length(), 0.000001,
+                "testGetNormal() failed");
+
+        // ================= Boundary Values Tests ==================
+        // TC02: Test for a proper result.
+        assertEquals(0, pl.getNormal().dotProduct(new Point(1,0,0).subtract(new Point(0,1,0))), 0.000001,
                 "testGetNormal() failed");
     }
 }

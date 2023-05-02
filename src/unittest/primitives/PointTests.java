@@ -57,7 +57,7 @@ public class PointTests {
 
         // =============== Boundary Values Tests ==================
         //  TC02:  distance squared from point to itself
-        assertEquals(p1.distanceSquared(p1), 0, "distance of point to itself is not 0");
+        assertEquals(0, p1.distanceSquared(p1), "distance of point to itself is not 0");
     }
 
     /**

@@ -30,6 +30,20 @@ class VectorTests {
                 "testAdd() vector opposite direction");
     }
 
+    @Test
+    void testSubtract(){
+        // ============ Equivalence Partitions Tests ==============
+        //TC01: Test subtracting two vectors with opposite direction
+        Vector v1 = new Vector(1, 2, 3);
+        assertEquals(new Vector(3, 6, 9), v1.subtract(new Vector(-2, -4, -6)),
+                "testSubtract() vector wrong result");
+
+        // =============== Boundary Values Tests ==================
+        //TC02: Test subtracting a vector with opposite direction to itself
+        assertThrows(IllegalArgumentException.class, () -> v1.subtract(new Vector(1, 2, 3)),
+                "testSubtract() vector opposite direction");
+    }
+
     /**
      * Test method for {@link primitives.Vector#scale(double)}.
      */

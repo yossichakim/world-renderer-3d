@@ -2,7 +2,6 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.Point;
-import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,7 +59,12 @@ class TriangleTests {
 
         // ============ Equivalence Partitions Tests ==============
         // TC01: Test for a proper result.
-        assertEquals(new Vector(1, 1, 1).normalize(), tr.getNormal(p1),
+        assertEquals(1, tr.getNormal(p1).length(),
+                "testGetNormal() failed");
+
+        // ================= Boundary Values Tests ==================
+        // TC02: Test for a proper result.
+        assertEquals(0, tr.getNormal(p1).dotProduct(new Point(1,0,0).subtract(new Point(0,1,0))), 0.000001,
                 "testGetNormal() failed");
     }
 }
