@@ -1,5 +1,5 @@
 package geometries;
-
+import java.util.List;
 import primitives.*;
 
 
@@ -7,7 +7,7 @@ import primitives.*;
  * The Geometry interface represents a geometric shape or object in 3D space.
  * Implementing classes must provide a method to retrieve the normal vector at a given point on the surface.
  */
-public interface Geometry {
+public interface Geometry extends Intersectable {
 
     /**
      * Returns the normal vector at the given point on the surface of the geometry.
@@ -16,5 +16,4 @@ public interface Geometry {
      * @return the normal vector at the given point
      */
     public Vector getNormal(Point point);
-
 }

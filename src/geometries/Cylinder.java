@@ -4,6 +4,8 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 /**
  * The Cylinder class represents a cylinder shape in 3D space.
  * A cylinder is defined by a tube with a given radius and an axis ray,
@@ -44,5 +46,14 @@ public class Cylinder extends Tube {
         }
 
         return point.subtract(po).normalize();
+    }
+
+    /**
+     * @param ray the ray
+     * @return list of intersection points
+     */
+    @Override
+    public List<Point> findIntersections(Ray ray) {
+        return null;
     }
 }
