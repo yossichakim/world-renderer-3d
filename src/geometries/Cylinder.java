@@ -6,6 +6,8 @@ import primitives.Vector;
 
 import java.util.List;
 
+import static primitives.Util.isZero;
+
 /**
  * The Cylinder class represents a cylinder shape in 3D space.
  * A cylinder is defined by a tube with a given radius and an axis ray,
@@ -38,15 +40,20 @@ public class Cylinder extends Tube {
      */
     @Override
     public Vector getNormal(Point point) {
-        double t = this.axisRay.getDir().dotProduct(point.subtract(this.axisRay.getP0()));
-        Point po = this.axisRay.getP0().add(this.axisRay.getDir().scale(t));
+        Point o1 = axisRay.getP0();//middle of first end
+        Point o2 = o1.add(axisRay.getDir().scale(height));//middle of second end
 
-        if (t == 0 || t == this.height) {
-            return this.axisRay.getDir();
+        if (isZero(point.subtract(o1).dotProduct(axisRay.getDir()))) {
+            return axisRay.getDir().scale(-1).normalize();
+
         }
+        else if (isZero(point.subtract(o2).dotProduct(axisRay.getDir()))) {
+            return axisRay.getDir().scale(1).normalize();
 
-        return point.subtract(po).normalize();
+        }
+        return super.getNormal(point);
     }
+
 
     /**
      * @param ray the ray

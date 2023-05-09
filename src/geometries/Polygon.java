@@ -1,5 +1,6 @@
 package geometries;
 
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 import java.util.List;
@@ -98,6 +99,30 @@ public class Polygon implements Geometry {
      */
     @Override
     public List<Point> findIntersections(Ray ray) {
-        return null;
+        List<Point> planeIntersections = plane.findIntersections(ray);
+        if (planeIntersections == null || !isRayOnPolygon(ray)) return null;
+
+        return planeIntersections;
     }
+
+    public boolean isRayOnPolygon(Ray ray) {
+        Vector v1, v2;
+        v1 = vertices.get(0).subtract(ray.getP0());
+        v2 = vertices.get(1).subtract(ray.getP0());
+        double prevN = ray.getDir().dotProduct((v1.crossProduct(v2)).normalize());
+        double curN;
+        if (alignZero(prevN) == 0) return false;
+
+        for (int i = 1; i < vertices.size(); i++) {
+            v1 = v2;
+            v2 = vertices.get((i + 1) % vertices.size()).subtract(ray.getP0());
+            curN = ray.getDir().dotProduct((v1.crossProduct(v2)).normalize());
+            if (alignZero(curN) == 0 || curN * prevN < 0)
+                return false;
+            prevN = curN;
+        }
+
+        return true;
+
+        }
 }

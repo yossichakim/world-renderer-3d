@@ -15,10 +15,20 @@ public class Ray {
      */
     private final Vector dir;
 
+    /**
+     * Gets the normalized direction vector of the ray.
+     *
+     * @return The normalized direction vector of the ray.
+     */
     public Vector getDir() {
         return dir;
     }
 
+    /**
+     * Gets the starting point of the ray.
+     *
+     * @return The starting point of the ray.
+     */
     public Point getP0() {
         return p0;
     }
@@ -29,10 +39,19 @@ public class Ray {
      * @param p0  the starting point of the ray
      * @param dir the direction vector of the ray
      */
-
     public Ray(Point p0, Vector dir) {
         this.p0 = p0;
         this.dir = dir.normalize();
+    }
+
+
+    /**
+     * Calculates the point where starts at p0 and scaled by t.
+     * @param t The scalar to scale the direction with.
+     * @return The calculated point.
+     */
+    public Point getPoint(double t) {
+        return p0.add(dir.scale(t));
     }
 
     @Override

@@ -1,38 +1,52 @@
 package geometries;
+import org.junit.jupiter.api.Test;
+import primitives.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 /**
  * Unit tests for geometries.Cylinder class
  *
  * @author Benjamin Machlev and Yossi Chakim
  */
-/*
+
 class CylinderTests {
 
     /**
      * Test method for {@link geometries.Polygon#getNormal(primitives.Point)}.
      */
-    /*
+
     @Test
-    /*
     public void testGetNormal() {
+        Ray r = new Ray(new Point(0,0,0), new Vector(0,0,1));
+        //The cylinder that is used in the tests.
+        Cylinder cylinder = new Cylinder(1, r, 1);
+
         // ============ Equivalence Partitions Tests ==============
-        // TC01: There is a simple single test here
-        Cylinder pl =new Cylinder(new Ray(new Point(0,0,0),new Vector(0,0,1)), 1, 2 ) ;
-       //checks if this is in the side
-        assertEquals(new Vector(0, 0, 1), pl.getNormal(new Point(0, 1, 0)), "Bad normal to Cylinder");
-       //checks if this is in the down base
-        assertEquals(new Vector(0, 0, 1), pl.getNormal(new Point(0, 1, 2)), "Bad normal to Cylinder");
+        // TC01: on the round surface
+        Point p1 = new Point(0,1,0.5);
+        assertEquals(new Vector(0, 1, 0), cylinder.getNormal(p1),
+                "testGetNormal() failed, on the round surface.");
 
-       //checks if this is in the up base
-        assertEquals(new Vector(0, 1, 0), pl.getNormal(new Point(0, 1, 1)), "Bad normal to Cylinder");
+        // TC02: points on side 1
+        Point p2 = new Point(0,0.5,0);
+        assertEquals(new Vector(0, 0, -1), cylinder.getNormal(p2),
+                "testGetNormal() failed, points on side 1.");
 
+        // TC03: points on side 2
+        Point p3 = new Point(0,0.5,1);
+        assertEquals(new Vector(0, 0, 1), cylinder.getNormal(p3),
+                "testGetNormal() failed, points on side 2.");
 
         // =============== Boundary Values Tests ==================
-        //checks if this is in the down base center
-        assertEquals(new Vector(0, 0, 1), pl.getNormal(new Point(0, 0, 0)), "Bad normal to Cylinder");
-        //checks if this is in the up base center
-        assertEquals(new Vector(0, 0, 1), pl.getNormal(new Point(0, 0, 2)), "Bad normal to Cylinder");
+        // TC04: points on side 1 edge
+        Point p4 = new Point(0,1,0);
+        assertEquals(new Vector(0, 0, -1), cylinder.getNormal(p4),
+                "testGetNormal() failed, points on side 1 edge.");
 
+        // TC05: points on side 2 edge
+        Point p5 = new Point(0,1,1);
+        assertEquals(new Vector(0, 0, 1), cylinder.getNormal(p5),
+                "testGetNormal() failed, points on side 2 edge.");
     }
-
-}*/
+}

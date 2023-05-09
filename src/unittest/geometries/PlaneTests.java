@@ -110,7 +110,7 @@ class PlaneTests {
 
         // =============== Boundary Values Tests ==================
         //TC03: Ray is parallel to the plane and not included in the plane (0 points)
-        ray = new Ray(new Point(0, -2, 0), new Vector(0, 1, 0));
+        ray = new Ray(new Point(0, -2, 0), new Vector(0, -1, 0));
         assertNull(plane.findIntersections(ray),
                 "testFindIntersections() failed, ray is parallel to the plane and not included in the plane");
 
@@ -139,7 +139,8 @@ class PlaneTests {
         assertNull(plane.findIntersections(ray),
                 "testFindIntersections() failed, ray is neither orthogonal nor parallel to and begins at the plane");
 
-        //TC09: Ray is neither orthogonal nor parallel to the plane and begins in the same point which appears as reference point in the plane (0 points)
+        //TC09: Ray is neither orthogonal nor parallel to the plane and begins in the same point which appears
+        // as reference point in the plane (0 points)
         ray = new Ray(new Point(1, 0, 0), new Vector(1, 1, 0));
         assertNull(plane.findIntersections(ray),
                 "testFindIntersections() failed, ray is neither orthogonal nor parallel to the plane and begins in the same point which appears as reference point in the plane");

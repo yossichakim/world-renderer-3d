@@ -1,5 +1,4 @@
 package geometries;
-
 import org.junit.jupiter.api.Test;
 import primitives.*;
 import java.util.List;
@@ -7,11 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for geometries.Sphere class
- *
  * @author Benjamin Machlev and Yossi Chakim
  */
 class SphereTests {
-
     /**
      * Test method for {@link geometries.Sphere#Sphere(double, Point)} Sphere(geometries.SphereTest)}.
      */

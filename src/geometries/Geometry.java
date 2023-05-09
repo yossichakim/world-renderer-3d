@@ -1,5 +1,4 @@
 package geometries;
-import java.util.List;
 import primitives.*;
 
 
@@ -15,5 +14,5 @@ public interface Geometry extends Intersectable {
      * @param point the point on the surface of the geometry
      * @return the normal vector at the given point
      */
-    public Vector getNormal(Point point);
+    Vector getNormal(Point point);
 }

@@ -23,10 +23,11 @@ public class Triangle extends Polygon {
 
     /**
      * @param ray the ray
-     * @return
+     * @return list of intersection points
+     * @see Polygon#findIntersections(Ray)
      */
     @Override
     public List<Point> findIntersections(Ray ray) {
-        return null;
+        return super.findIntersections(ray);
     }
 }
