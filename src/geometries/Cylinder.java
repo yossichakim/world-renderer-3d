@@ -54,7 +54,6 @@ public class Cylinder extends Tube {
         return super.getNormal(point);
     }
 
-
     /**
      * @param ray the ray
      * @return list of intersection points

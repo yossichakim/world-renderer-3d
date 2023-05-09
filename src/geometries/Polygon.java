@@ -1,13 +1,13 @@
 package geometries;
 
-import static primitives.Util.alignZero;
-import static primitives.Util.isZero;
-
-import java.util.List;
-
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
+
+import java.util.List;
+
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * Polygon class represents two-dimensional polygon in 3D Cartesian coordinate
@@ -99,16 +99,23 @@ public class Polygon implements Geometry {
      */
     @Override
     public List<Point> findIntersections(Ray ray) {
+
         List<Point> planeIntersections = plane.findIntersections(ray);
+
         if (planeIntersections == null || !isRayOnPolygon(ray)) return null;
 
         return planeIntersections;
     }
 
+    /**
+     * @param ray The ray to check if the intersection is on polygon.
+     * @return <b>True</b> if on polygon, <b>false</b> otherwise.
+     */
     public boolean isRayOnPolygon(Ray ray) {
         Vector v1, v2;
         v1 = vertices.get(0).subtract(ray.getP0());
         v2 = vertices.get(1).subtract(ray.getP0());
+
         double prevN = ray.getDir().dotProduct((v1.crossProduct(v2)).normalize());
         double curN;
         if (alignZero(prevN) == 0) return false;
@@ -121,8 +128,6 @@ public class Polygon implements Geometry {
                 return false;
             prevN = curN;
         }
-
         return true;
-
         }
 }
