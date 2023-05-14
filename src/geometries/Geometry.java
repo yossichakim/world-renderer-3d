@@ -1,5 +1,7 @@
 package geometries;
-import primitives.*;
+
+import primitives.Point;
+import primitives.Vector;
 
 
 /**

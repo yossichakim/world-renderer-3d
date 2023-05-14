@@ -2,8 +2,6 @@ package primitives;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.IllegalArgumentException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -31,7 +29,7 @@ class VectorTests {
     }
 
     @Test
-    void testSubtract(){
+    void testSubtract() {
         // ============ Equivalence Partitions Tests ==============
         //TC01: Test subtracting two vectors with opposite direction
         Vector v1 = new Vector(1, 2, 3);

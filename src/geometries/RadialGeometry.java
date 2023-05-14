@@ -4,11 +4,14 @@ package geometries;
  * Represents a radial geometry shape in 3D space.
  */
 public abstract class RadialGeometry implements Geometry {
-
     /**
      * The radius of the radial geometry shape.
      */
     protected final double radius;
+    /**
+     * The squared radius of the radial geometry shape.
+     */
+    protected final double radiusSquared;
 
     /**
      * Constructs a radial geometry shape with a given radius.
@@ -17,5 +20,6 @@ public abstract class RadialGeometry implements Geometry {
      */
     public RadialGeometry(double radius) {
         this.radius = radius;
+        radiusSquared = radius * radius;
     }
 }

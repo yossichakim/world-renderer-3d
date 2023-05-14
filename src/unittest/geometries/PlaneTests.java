@@ -5,7 +5,6 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -66,10 +65,9 @@ class PlaneTests {
         // TC01: Test for a proper result.
         assertEquals(1, pl.getNormal(p1).length(),
                 "testGetNormalPoint() failed");
-
-        // ================= Boundary Values Tests ==================
-        // TC02: Test for a proper result.
-        assertEquals(0, pl.getNormal().dotProduct(new Point(1,0,0).subtract(new Point(0,1,0))), 0.000001,
+        assertEquals(0, pl.getNormal().dotProduct(new Point(1, 0, 0).subtract(new Point(0, 1, 0))), 0.000001,
+                "testGetNormal() failed");
+        assertEquals(0, pl.getNormal().dotProduct(new Point(1, 0, 0).subtract(new Point(0, 0, 1))), 0.000001,
                 "testGetNormal() failed");
     }
 
@@ -87,7 +85,7 @@ class PlaneTests {
 
         // ================= Boundary Values Tests ==================
         // TC02: Test for a proper result.
-        assertEquals(0, pl.getNormal().dotProduct(new Point(1,0,0).subtract(new Point(0,1,0))), 0.000001,
+        assertEquals(0, pl.getNormal().dotProduct(new Point(1, 0, 0).subtract(new Point(0, 1, 0))), 0.000001,
                 "testGetNormal() failed");
     }
 
@@ -95,7 +93,7 @@ class PlaneTests {
      * Test method for {@link Plane#findIntersections(Ray)}  Plane(geometries.PlaneTest)}.
      */
     @Test
-    void testFindIntersections(){
+    void testFindIntersections() {
         // ============ Equivalence Partitions Tests ==============
         //TC01: Ray intersects the plane
         Plane plane = new Plane(new Point(1, 0, 0), new Vector(0, 1, 0));

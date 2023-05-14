@@ -124,10 +124,10 @@ public class Polygon implements Geometry {
             v1 = v2;
             v2 = vertices.get((i + 1) % vertices.size()).subtract(ray.getP0());
             curN = ray.getDir().dotProduct((v1.crossProduct(v2)).normalize());
-            if (alignZero(curN) == 0 || curN * prevN < 0)
+            if (alignZero(curN) == 0 || alignZero(curN * prevN) < 0)
                 return false;
             prevN = curN;
         }
         return true;
-        }
+    }
 }

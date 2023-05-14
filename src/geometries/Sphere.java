@@ -1,7 +1,12 @@
 package geometries;
-import primitives.*;
+
+import primitives.Point;
+import primitives.Ray;
+import primitives.Vector;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static primitives.Util.alignZero;
 
 /**
@@ -43,33 +48,22 @@ public class Sphere extends RadialGeometry {
     @Override
     public List<Point> findIntersections(Ray ray) {
         // Ray starts at the center of the sphere
-        if(center.equals(ray.getP0())) {
-            List<Point> lst = new ArrayList<>();
-            lst.add(ray.getPoint(radius));
-            return lst;
-        }
+        if (center.equals(ray.getP0()))
+            return List.of(ray.getPoint(radius));
 
         Vector u = center.subtract(ray.getP0());
         // Not the other way around to not break LoD
         double tm = u.dotProduct(ray.getDir());
-        double d = Math.sqrt(u.lengthSquared() - tm * tm);
-        // No intersection points
-        if (d >= radius) return null;
+        double dSquared = u.lengthSquared() - tm * tm;
+        double thSquared = radiusSquared - dSquared;
+        // No intersection points or ray is tangent ot sphere
+        if (alignZero(thSquared) <= 0) return null;
 
-        // Ray is tangent to the sphere
-        List<Point> lst = new ArrayList<>();
-        double th = Math.sqrt(radius * radius - d * d);
+        double th = Math.sqrt(thSquared); // it's always positive
+        double t1 = tm + th; // it's always greater than t2
+        if (alignZero(t1) <= 0) return null;
 
-        double t1 = tm + th;
         double t2 = tm - th;
-        if (alignZero(t1) > 0 )
-            lst.add(( ray.getPoint(t1)));
-
-        if (alignZero(t2) > 0 )
-            lst.add(( ray.getPoint(t2)));
-
-        if (lst.size() == 0) return null;
-
-        return lst;
+        return alignZero(t2) > 0 ? List.of(ray.getPoint(t2), ray.getPoint(t1)) : List.of(ray.getPoint(t1));
     }
 }

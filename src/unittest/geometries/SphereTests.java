@@ -1,11 +1,17 @@
 package geometries;
+
 import org.junit.jupiter.api.Test;
-import primitives.*;
+import primitives.Point;
+import primitives.Ray;
+import primitives.Vector;
+
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for geometries.Sphere class
+ *
  * @author Benjamin Machlev and Yossi Chakim
  */
 class SphereTests {
@@ -39,7 +45,7 @@ class SphereTests {
      * Test method for {@link geometries.Sphere#findIntersections(Ray)} Sphere(geometries.SphereTest)}.
      */
     @Test
-    void testFindIntersections(){
+    void testFindIntersections() {
         Sphere sphere = new Sphere(1d, new Point(1, 0, 0));
         // ============ Equivalence Partitions Tests ==============
         // TC01: Ray's line is outside the sphere (0 points)
@@ -60,7 +66,7 @@ class SphereTests {
                 "testFindIntersections() failed, Wrong points");
 
         // TC03: Ray starts inside the sphere (1 point)
-        Point intersectionPoint = new Point(0,0,0);
+        Point intersectionPoint = new Point(0, 0, 0);
         result = sphere.findIntersections(new Ray(new Point(1.5, 0, 0), new Vector(-1.5, 0, 0)));
         assertEquals(1, result.size(),
                 "testFindIntersections() failed, Wrong number of points");
@@ -89,8 +95,8 @@ class SphereTests {
 
         // **** Group: Ray's line goes through the center
         // TC07: Ray starts before the sphere (2 points)
-        p1 = new Point(0,0,0);
-        p2 = new Point(2,0,0);
+        p1 = new Point(0, 0, 0);
+        p2 = new Point(2, 0, 0);
         result = sphere.findIntersections(new Ray(new Point(3, 0, 0), new Vector(-3, 0, 0)));
         assertEquals(2, result.size(),
                 "testFindIntersections() failed, Wrong number of points");

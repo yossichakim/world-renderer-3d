@@ -46,8 +46,7 @@ public class Cylinder extends Tube {
         if (isZero(point.subtract(o1).dotProduct(axisRay.getDir()))) {
             return axisRay.getDir().scale(-1).normalize();
 
-        }
-        else if (isZero(point.subtract(o2).dotProduct(axisRay.getDir()))) {
+        } else if (isZero(point.subtract(o2).dotProduct(axisRay.getDir()))) {
             return axisRay.getDir().scale(1).normalize();
 
         }

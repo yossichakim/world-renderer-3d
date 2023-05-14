@@ -1,10 +1,10 @@
 package geometries;
 
-import primitives.*;
+import primitives.Point;
+import primitives.Ray;
+import primitives.Vector;
 
 import java.util.List;
-
-import static primitives.Util.isZero;
 
 /**
  * Represents a tube in 3D space.
@@ -27,26 +27,12 @@ public class Tube extends RadialGeometry {
         this.axisRay = axisRay;
     }
 
-    /**
-     * Gets the normal vector to the tube at a given point.
-     *
-     * @param point The point at which to get the normal vector.
-     * @return The normal vector to the tube at the given point.
-     */
     @Override
     public Vector getNormal(Point point) {
-        Point p0 = this.axisRay.getP0();
-        Vector v = this.axisRay.getDir();
-        double t = v.dotProduct(point.subtract(p0));
-        Point pO = isZero(t) ? p0 : p0.add(v.scale(t));
-
-        return point.subtract(pO).normalize();
+        double t = this.axisRay.getDir().dotProduct(point.subtract(this.axisRay.getP0()));
+        return point.subtract(axisRay.getPoint(t)).normalize();
     }
 
-    /**
-     * @param ray the ray
-     * @return
-     */
     @Override
     public List<Point> findIntersections(Ray ray) {
         return null;
