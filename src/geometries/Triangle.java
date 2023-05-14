@@ -1,6 +1,5 @@
 package geometries;
 
-import primitives.Double3;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
@@ -25,14 +24,18 @@ public class Triangle extends Polygon {
     public Triangle(Point p1, Point p2, Point p3) {
         super(p1, p2, p3);
     }
-    
+
+    /**
+     * @param ray the ray to find intersections with
+     * @return list of intersection points
+     */
     @Override
     public List<Point> findIntersections(Ray ray) {
-        
-        List<Point> intersections = new ;
-        
+        // implement the algorithm for finding ray intersection with triangle
+        List<Point> intersections = super.findIntersections(ray);
+
         if (intersections == null) return null;
-        
+
         Point p0 = ray.getP0();
         Vector v = ray.getDir();
 
@@ -52,5 +55,7 @@ public class Triangle extends Polygon {
         if (alignZero(sign * sign3) <= 0 ) return null;
 
         return intersections;
+
+
     }
 }
