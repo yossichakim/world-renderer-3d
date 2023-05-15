@@ -31,31 +31,34 @@ public class Triangle extends Polygon {
      */
     @Override
     public List<Point> findIntersections(Ray ray) {
-        // implement the algorithm for finding ray intersection with triangle
-        List<Point> intersections = super.findIntersections(ray);
+        // Ray starts at one of the vertices or Ray starts on one of the edges
+        if (vertices.get(0).equals(ray.getP0()) ||
+                vertices.get(1).equals(ray.getP0()) ||
+                vertices.get(2).equals(ray.getP0()))
+            return null;
 
-        if (intersections == null) return null;
+        // Ray starts on the plane of the triangle
+        Vector v1 = vertices.get(0).subtract(ray.getP0());
+        Vector v2 = vertices.get(1).subtract(ray.getP0());
+        Vector v3 = vertices.get(2).subtract(ray.getP0());
 
-        Point p0 = ray.getP0();
-        Vector v = ray.getDir();
-
-        Vector v1 = vertices.get(0).subtract(p0);
-        Vector v2 = vertices.get(1).subtract(p0);
         Vector n1 = v1.crossProduct(v2).normalize();
-        double sign = alignZero(v.dotProduct(n1));
-        if (isZero(sign)) return null;
-
-        Vector v3 = vertices.get(2).subtract(p0);
         Vector n2 = v2.crossProduct(v3).normalize();
-        double sign2 = alignZero(v.dotProduct(n2));
-        if (alignZero(sign * sign2) <= 0 ) return null;
-
         Vector n3 = v3.crossProduct(v1).normalize();
-        double sign3 = v.dotProduct(n3);
-        if (alignZero(sign * sign3) <= 0 ) return null;
 
-        return intersections;
+        double s1 = ray.getDir().dotProduct(n1);
+        double s2 = ray.getDir().dotProduct(n2);
+        double s3 = ray.getDir().dotProduct(n3);
 
+        // Ray is parallel to the plane of the triangle
+        if (isZero(s1) || isZero(s2) || isZero(s3))
+            return null;
 
+        // Ray is outside the plane of the triangle
+        if (alignZero(s1) > 0 && alignZero(s2) > 0 && alignZero(s3) > 0 ||
+                alignZero(s1) < 0 && alignZero(s2) < 0 && alignZero(s3) < 0)
+            return plane.findIntersections(ray);
+
+        return null;
     }
 }
