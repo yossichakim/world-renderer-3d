@@ -77,7 +77,7 @@ public class IntegrationTests {
     /**
      * Integration tests of a camera and a plane.
      *
-     * @param shapes the shapes (sphere, plane, triangle)
+     * @param shapes                     the shapes (sphere, plane, triangle)
      * @param intersectionPointsExpected the expected number of intersection points
      */
     private void testIntersectionWithCamera(List<Intersectable> shapes, List<Integer> intersectionPointsExpected) {
@@ -121,7 +121,6 @@ public class IntegrationTests {
                 "testIntersectionWithCamera() " + shapes.get(0).getClass().getSimpleName() +
                         ", Wrong number of intersection points");
     }
-
 
 
 }

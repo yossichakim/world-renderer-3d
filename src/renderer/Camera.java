@@ -41,6 +41,7 @@ public class Camera {
      *
      * @return the position of the camera.
      */
+    @SuppressWarnings("unused")
     public Point getPosition() {
         return position;
     }
@@ -50,6 +51,7 @@ public class Camera {
      *
      * @return the v to - the vector from the camera to the view plane.
      */
+    @SuppressWarnings("unused")
     public Vector getVTo() {
         return vTo;
     }
@@ -59,6 +61,7 @@ public class Camera {
      *
      * @return the vUp Vector.
      */
+    @SuppressWarnings("unused")
     public Vector getVUp() {
         return vUp;
     }
@@ -68,6 +71,7 @@ public class Camera {
      *
      * @return the vRight Vector.
      */
+    @SuppressWarnings("unused")
     public Vector getVRight() {
         return vRight;
     }
@@ -77,6 +81,7 @@ public class Camera {
      *
      * @return the width of the view plane.
      */
+    @SuppressWarnings("unused")
     public double getWidth() {
         return width;
     }
@@ -86,6 +91,7 @@ public class Camera {
      *
      * @return the height of the view plane.
      */
+    @SuppressWarnings("unused")
     public double getHeight() {
         return height;
     }
@@ -95,6 +101,7 @@ public class Camera {
      *
      * @return the distance from the camera to the view plane.
      */
+    @SuppressWarnings("unused")
     public double getDistance() {
         return distance;
     }

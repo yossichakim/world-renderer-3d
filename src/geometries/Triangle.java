@@ -7,7 +7,6 @@ import primitives.Vector;
 import java.util.List;
 
 import static primitives.Util.alignZero;
-import static primitives.Util.isZero;
 
 /**
  * Represents a triangle in 3D space.
@@ -31,34 +30,29 @@ public class Triangle extends Polygon {
      */
     @Override
     public List<Point> findIntersections(Ray ray) {
-        // Ray starts at one of the vertices or Ray starts on one of the edges
-        if (vertices.get(0).equals(ray.getP0()) ||
-                vertices.get(1).equals(ray.getP0()) ||
-                vertices.get(2).equals(ray.getP0()))
-            return null;
+        var intersection = plane.findIntersections(ray);
+        if (intersection == null) return null;
 
-        // Ray starts on the plane of the triangle
-        Vector v1 = vertices.get(0).subtract(ray.getP0());
-        Vector v2 = vertices.get(1).subtract(ray.getP0());
-        Vector v3 = vertices.get(2).subtract(ray.getP0());
+        Point p0 = ray.getP0();
+        Vector dir = ray.getDir();
 
+        // take care of the 1st edge
+        Vector v1 = vertices.get(0).subtract(p0);
+        Vector v2 = vertices.get(1).subtract(p0);
         Vector n1 = v1.crossProduct(v2).normalize();
+        double s1 = alignZero(dir.dotProduct(n1));
+        if (s1 == 0) return null;
+
+        // take care of the 2nd edge
+        Vector v3 = vertices.get(2).subtract(p0);
         Vector n2 = v2.crossProduct(v3).normalize();
+        double s2 = alignZero(dir.dotProduct(n2));
+        if (s1 * s2 <= 0) return null;
+
         Vector n3 = v3.crossProduct(v1).normalize();
+        double s3 = alignZero(dir.dotProduct(n3));
+        if (s1 * s3 <= 0) return null;
 
-        double s1 = ray.getDir().dotProduct(n1);
-        double s2 = ray.getDir().dotProduct(n2);
-        double s3 = ray.getDir().dotProduct(n3);
-
-        // Ray is parallel to the plane of the triangle
-        if (isZero(s1) || isZero(s2) || isZero(s3))
-            return null;
-
-        // Ray is outside the plane of the triangle
-        if (alignZero(s1) > 0 && alignZero(s2) > 0 && alignZero(s3) > 0 ||
-                alignZero(s1) < 0 && alignZero(s2) < 0 && alignZero(s3) < 0)
-            return plane.findIntersections(ray);
-
-        return null;
+        return intersection;
     }
 }
