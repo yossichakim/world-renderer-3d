@@ -1,7 +1,8 @@
 package renderer;
 
 import static java.awt.Color.YELLOW;
-import static renderer.CameraTest.ZERO_POINT;
+import static primitives.Point.ZERO_POINT;
+
 import org.junit.jupiter.api.Test;
 import geometries.Sphere;
 import geometries.Triangle;

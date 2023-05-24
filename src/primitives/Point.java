@@ -5,6 +5,7 @@ package primitives;
  */
 public class Point {
     protected final Double3 xyz;
+    public static final Point ZERO_POINT = new Point(0, 0, 0);
 
     /**
      * Constructs a new point with the specified x, y, and z coordinates.

@@ -6,14 +6,14 @@ import primitives.Ray;
 import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static primitives.Point.ZERO_POINT;
 
 /**
  * Testing Camera Class
  *
  * @author Dan
  */
-class CameraTest {
-    static final Point ZERO_POINT = new Point(0, 0, 0);
+public class CameraTest {
 
     /**
      * Test method for
@@ -53,7 +53,6 @@ class CameraTest {
         // BV06: 4X4 Side (0,1)
         assertEquals(new Ray(ZERO_POINT, new Vector(1, -3, -10)),
                 camera.setVPSize(8, 8).constructRay(4, 4, 1, 0), badRay);
-
     }
 
 }
