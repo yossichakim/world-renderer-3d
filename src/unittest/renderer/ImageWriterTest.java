@@ -22,7 +22,7 @@ public class ImageWriterTest {
                 if (i % 50 == 0 || j % 50 == 0)
                     imageWriter.writePixel(i, j, new Color(255, 0, 0));
                 else
-                    imageWriter.writePixel(i, j, new Color(255, 255, 0));
+                    imageWriter.writePixel(i, j, new Color(0, 255, 0));
             }
         }
 

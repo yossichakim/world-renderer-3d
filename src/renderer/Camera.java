@@ -1,9 +1,8 @@
 package renderer;
 
-import primitives.Point;
-import primitives.Ray;
-import primitives.Vector;
-
+import primitives.*;
+import java.util.MissingResourceException;
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 /**
@@ -19,6 +18,9 @@ public class Camera {
     private double width;
     private double height;
     private double distance;
+
+    private ImageWriter imageWriter;
+    private RayTracerBase rayTracer;
 
     /**
      * Constructor for a new Camera.
@@ -130,6 +132,29 @@ public class Camera {
         return this;
     }
 
+
+    /**
+     * Sets image writer.
+     *
+     * @param imageWriter the image writer
+     * @return the image writer
+     */
+    public Camera setImageWriter(ImageWriter imageWriter) {
+        this.imageWriter = imageWriter;
+        return this;
+    }
+
+    /**
+     * Sets ray tracer.
+     *
+     * @param rayTracer the ray tracer
+     * @return the ray tracer
+     */
+    public Camera setRayTracer(RayTracerBase rayTracer) {
+        this.rayTracer = rayTracer;
+        return this;
+    }
+
     /**
      * Constructs a ray through a pixel in the view plane.
      *
@@ -158,6 +183,78 @@ public class Camera {
 
         // Construct and return the ray from the camera position to the pixel position
         return new Ray(position, pIJ.subtract(position));
+    }
+
+    /**
+     * Render the image.
+     */
+    public Camera renderImage() {
+        // Check if imageWriter is set
+        if (imageWriter == null)
+            throw new MissingResourceException("","Camera","ImageWriter is not set");
+
+
+        // Check if rayTracer is set
+        if (rayTracer == null)
+            throw new MissingResourceException("","Camera","RayTracer is not set");
+
+
+        // Check if width, height, and distance are set
+        if (alignZero(width) <= 0 || alignZero(height) <= 0 || alignZero(distance) <= 0 )
+            throw new MissingResourceException("","Camera","View plane dimensions are not set");
+
+
+        // Check if position, vTo, and vUp are set
+        if (position == null || vTo == null || vUp == null)
+            throw new MissingResourceException("","Camera","Camera position or orientation vectors are not set");
+
+        int nX = imageWriter.getNx();
+        int nY = imageWriter.getNy();
+
+        for (int i = 0; i < nX; i++)
+            for (int j = 0; j < nY; j++)
+                imageWriter.writePixel(j, i, this.castRay(nX, nY, j, i));
+
+        return this;
+    }
+
+    /**
+     * Cast ray color.
+     */
+    private Color castRay(int nX, int nY, int j, int i) {
+        Ray ray = constructRay(nX, nY, j, i);
+        return rayTracer.traceRay(ray);
+    }
+
+    /**
+     *  prints grid on top of image
+     *
+     * @param interval of grid
+     * @param color    of grid
+     */
+    public void printGrid(int interval, Color color) {
+        if (imageWriter == null)
+            throw new MissingResourceException("","Camera","ImageWriter is not set");
+
+        int nX = imageWriter.getNx();
+        int nY = imageWriter.getNy();
+
+        for (int i = 0; i < nX; i++) {
+            for (int j = 0; j < nY; j++) {
+                if ((i % interval == 0) || (j % interval == 0))
+                    imageWriter.writePixel(i, j, color);
+            }
+        }
+    }
+
+    /**
+     * Writes the image to the imageWriter.
+     */
+    public void writeToImage(){
+        if (imageWriter == null)
+            throw new MissingResourceException("","Camera","ImageWriter is not set");
+
+        imageWriter.writeToImage();
     }
 
 }

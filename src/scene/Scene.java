@@ -70,6 +70,4 @@ public class Scene {
         this.geometries = geometries;
         return this;
     }
-
-
 }
