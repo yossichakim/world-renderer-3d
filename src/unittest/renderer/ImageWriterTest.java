@@ -14,18 +14,16 @@ public class ImageWriterTest {
      */
     @Test
     public void testWriteToImage() {
+        final int width = 800;
+        final int height = 800;
+        final int step = 50;
+        final Color color1 = new Color(java.awt.Color.RED);
+        final Color color2 = new Color(java.awt.Color.GREEN);
 
-        ImageWriter imageWriter = new ImageWriter("test", 800, 500);
-
-        for (int i = 0; i < imageWriter.getNx(); i++) {
-            for (int j = 0; j < imageWriter.getNy(); j++) {
-                if (i % 50 == 0 || j % 50 == 0)
-                    imageWriter.writePixel(i, j, new Color(255, 0, 0));
-                else
-                    imageWriter.writePixel(i, j, new Color(0, 255, 0));
-            }
-        }
-
+        ImageWriter imageWriter = new ImageWriter("test", width, height);
+        for (int i = 0; i < width; i++)
+            for (int j = 0; j < height; j++)
+                imageWriter.writePixel(i, j, i % step == 0 || j % step == 0 ? color1 : color2);
         imageWriter.writeToImage();
     }
 }

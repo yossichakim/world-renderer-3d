@@ -187,22 +187,20 @@ public class Camera {
 
     /**
      * Render the image.
+     * @return camera object itself
      */
     public Camera renderImage() {
         // Check if imageWriter is set
         if (imageWriter == null)
             throw new MissingResourceException("","Camera","ImageWriter is not set");
 
-
         // Check if rayTracer is set
         if (rayTracer == null)
             throw new MissingResourceException("","Camera","RayTracer is not set");
 
-
         // Check if width, height, and distance are set
         if (alignZero(width) <= 0 || alignZero(height) <= 0 || alignZero(distance) <= 0 )
             throw new MissingResourceException("","Camera","View plane dimensions are not set");
-
 
         // Check if position, vTo, and vUp are set
         if (position == null || vTo == null || vUp == null)
@@ -220,6 +218,7 @@ public class Camera {
 
     /**
      * Cast ray color.
+     * @return color of the ray
      */
     private Color castRay(int nX, int nY, int j, int i) {
         Ray ray = constructRay(nX, nY, j, i);

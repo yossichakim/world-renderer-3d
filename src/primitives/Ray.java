@@ -70,7 +70,7 @@ public class Ray {
             return null;
 
         Point result = null;
-        double minDistance = Double.MAX_VALUE;
+        double minDistance = Double.POSITIVE_INFINITY;
         for (Point point : points) {
             double distance = p0.distanceSquared(point);
             if (distance < minDistance) {
