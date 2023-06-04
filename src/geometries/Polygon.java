@@ -4,6 +4,7 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import static primitives.Util.alignZero;
@@ -15,7 +16,7 @@ import static primitives.Util.isZero;
  *
  * @author Dan
  */
-public class Polygon implements Geometry {
+public class Polygon extends Geometry {
     /**
      * List of polygon's vertices
      */
@@ -98,13 +99,16 @@ public class Polygon implements Geometry {
      * @return list of intersection points
      */
     @Override
-    public List<Point> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
 
-        List<Point> planeIntersections = plane.findIntersections(ray);
+        List<GeoPoint> planeIntersections = plane.findGeoIntersections(ray);
 
         if (planeIntersections == null || !isRayOnPolygon(ray)) return null;
 
-        return planeIntersections;
+        var result = new LinkedList<GeoPoint>();
+        result.add(new GeoPoint(this, planeIntersections.get(0).point));
+
+        return result;
     }
 
     /**

@@ -1,8 +1,10 @@
 package scene;
 
+import lighting.*;
 import primitives.Color;
 import geometries.Geometries;
-import lighting.AmbientLight;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Represents a scene in 3D space.
@@ -28,6 +30,11 @@ public class Scene {
      * The geometries of the scene.
      */
     public Geometries geometries = new Geometries();
+
+    /**
+     * The lights of the scene.
+     */
+    public List<LightSource> lights = new LinkedList<>();
 
     /**
      * constructor for Scene
@@ -68,6 +75,17 @@ public class Scene {
      */
     public Scene setGeometries(Geometries geometries) {
         this.geometries = geometries;
+        return this;
+    }
+
+    /**
+     * function adds lights in the scene
+     *
+     * @param light light to add
+     * @return this
+     */
+    public Scene addLight(LightSource light) {
+        lights.add(light);
         return this;
     }
 }

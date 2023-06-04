@@ -4,6 +4,8 @@ import java.util.List;
 
 import static primitives.Util.isZero;
 
+import geometries.Intersectable.GeoPoint;
+
 /**
  * Ray class represents a ray in a 3D Cartesian coordinate system.
  * A ray is defined by a starting point and a direction vector.
@@ -66,13 +68,24 @@ public class Ray {
      * @return The closest point to the ray's starting point from the list of points.
      */
     public Point findClosestPoint(List<Point> points) {
+        return points == null || points.isEmpty() ? null
+                :findClosestGeoPoint (points.stream().map(p -> new GeoPoint (null, p)).toList()).point;
+    }
+
+    /**
+     * Find closest GeoPoint
+     *
+     * @param points list of GeoPoints
+     * @return closest GeoPoint
+     */
+    public GeoPoint findClosestGeoPoint(List<GeoPoint> points) {
         if (points == null || points.isEmpty())
             return null;
 
-        Point result = null;
+        GeoPoint result = null;
         double minDistance = Double.POSITIVE_INFINITY;
-        for (Point point : points) {
-            double distance = p0.distanceSquared(point);
+        for (GeoPoint point : points) {
+            double distance = point.point.distance(p0);
             if (distance < minDistance) {
                 minDistance = distance;
                 result = point;

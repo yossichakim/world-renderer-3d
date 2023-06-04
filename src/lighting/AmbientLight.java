@@ -3,12 +3,10 @@ package lighting;
 import primitives.*;
 
 /*
- * AmbientLight class represents ambient lighting in a scene.
+ * AmbientLight class represents an ambient light in a scene.
  */
-public class AmbientLight {
+public class AmbientLight extends Light {
 
-    // The intensity of the ambient light
-    private final Color intensity;
 
     // Constant for representing no ambient light
     public static final AmbientLight NONE = new AmbientLight(Color.BLACK, Double3.ZERO);
@@ -20,7 +18,7 @@ public class AmbientLight {
      * @param kA The attenuation factor for the ambient light
      */
     public AmbientLight(Color iA, Double3 kA) {
-        this.intensity = iA.scale(kA);
+        super(iA.scale(kA));
     }
 
     /**
@@ -30,15 +28,6 @@ public class AmbientLight {
      * @param kA The attenuation factor for the ambient light
      */
     public AmbientLight(double kA) {
-        this.intensity = Color.BLACK.scale(kA);
-    }
-
-    /**
-     * Gets the intensity of the ambient light.
-     *
-     * @return The intensity of the ambient light
-     */
-    public Color getIntensity() {
-        return intensity;
+        super(Color.BLACK.scale(kA));
     }
 }
