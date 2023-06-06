@@ -26,7 +26,6 @@ public class RayTracerBasic extends RayTracerBase {
     @Override
     public Color traceRay(Ray ray) {
         var intersections = scene.geometries.findGeoIntersections(ray);
-
         return intersections == null ? scene.background : calcColor(ray.findClosestGeoPoint(intersections), ray);
     }
 
@@ -37,7 +36,7 @@ public class RayTracerBasic extends RayTracerBase {
      * @return the color intensity in a point
      */
     private Color calcColor(GeoPoint gp, Ray ray) {
-        return scene.ambientLight.getIntensity().add(scene.ambientLight.getIntensity(), calcLocalEffects(gp, ray));
+        return scene.ambientLight.getIntensity().add(calcLocalEffects(gp, ray));
     }
 
     /**
@@ -52,7 +51,6 @@ public class RayTracerBasic extends RayTracerBase {
         Vector vector = ray.getDir();
         Vector normal = gp.geometry.getNormal(gp.point);
         double nv = alignZero(normal.dotProduct(vector));
-
         if (isZero(nv)) return color;
 
         Material material = gp.geometry.getMaterial();
@@ -79,8 +77,8 @@ public class RayTracerBasic extends RayTracerBase {
      */
     private Double3 calcSpecular(Material material, Vector normal, Vector lightVector, double nl, Vector vector) {
         Vector reflectedVector = lightVector.subtract(normal.scale(2 * nl));
-        double max = Math.max(0, vector.scale(-1).dotProduct(reflectedVector));
-        return material.kS.scale(Math.pow(max, material.nShininess));
+        double minusVR = alignZero(-vector.dotProduct(reflectedVector));
+        return minusVR <= 0 ? Double3.ZERO : material.kS.scale(Math.pow(minusVR, material.nShininess));
 
     }
 
@@ -92,6 +90,6 @@ public class RayTracerBasic extends RayTracerBase {
      * @return diffusive color
      */
     private Double3 calcDiffusive(Material material, double nl) {
-        return material.kD.scale(Math.abs(nl));
+        return material.kD.scale(nl < 0 ? -nl : nl);
     }
 }

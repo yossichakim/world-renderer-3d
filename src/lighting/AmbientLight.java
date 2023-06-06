@@ -9,7 +9,10 @@ import primitives.Double3;
 public class AmbientLight extends Light {
 
 
-    // Constant for representing no ambient light
+    /**
+     * Constant for representing no ambient light
+     */
+
     public static final AmbientLight NONE = new AmbientLight(Color.BLACK, Double3.ZERO);
 
     /**

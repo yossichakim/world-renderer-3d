@@ -4,7 +4,15 @@ package primitives;
  * Represents a point in 3D space.
  */
 public class Point {
+
+    /**
+     * The point's coordinates.
+     */
     protected final Double3 xyz;
+
+    /**
+     * The origin point (0, 0, 0).
+     */
     public static final Point ZERO_POINT = new Point(0, 0, 0);
 
     /**
@@ -18,6 +26,11 @@ public class Point {
         xyz = new Double3(x, y, z);
     }
 
+    /**
+     * Constructs a new point with the specified coordinates.
+     *
+     * @param xyz the coordinates of the point
+     */
     Point(Double3 xyz) { // package-friendly access modifier
         this.xyz = xyz;
     }

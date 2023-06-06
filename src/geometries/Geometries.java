@@ -1,11 +1,17 @@
 package geometries;
 
-import primitives.Point;
 import primitives.Ray;
 
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * The class Geometries represents a collection of geometries.
+ * It is a derived class of the Intersectable abstract class.
+ * It is composed of a list of geometries.
+ * It is used to find intersections between a ray and the geometries in the collection.
+ * It is used to find the closest intersection point to a given point.
+ */
 public class Geometries extends Intersectable {
 
     /**

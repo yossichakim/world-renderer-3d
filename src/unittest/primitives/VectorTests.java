@@ -28,6 +28,9 @@ class VectorTests {
                 "testAdd() vector opposite direction");
     }
 
+    /**
+     * Test method for {@link primitives.Vector#subtract(primitives.Point)}.
+     */
     @Test
     void testSubtract() {
         // ============ Equivalence Partitions Tests ==============

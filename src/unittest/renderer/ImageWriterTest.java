@@ -14,8 +14,8 @@ public class ImageWriterTest {
      */
     @Test
     public void testWriteToImage() {
-        final int width = 800;
-        final int height = 800;
+        final int width = 801;
+        final int height = 501;
         final int step = 50;
         final Color color1 = new Color(java.awt.Color.RED);
         final Color color2 = new Color(java.awt.Color.GREEN);

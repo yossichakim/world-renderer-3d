@@ -40,8 +40,7 @@ public abstract class Intersectable {
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
-            if (!(o instanceof GeoPoint geoPoint)) return false;
-            return geometry == geoPoint.geometry && point.equals(geoPoint.point);
+            return o instanceof GeoPoint geoPoint && geometry == geoPoint.geometry && point.equals(geoPoint.point);
         }
 
         @Override
@@ -59,7 +58,7 @@ public abstract class Intersectable {
      * @param ray the ray
      * @return the list of intersection points
      */
-    public List<Point> findIntersections(Ray ray) {
+    public final List<Point> findIntersections(Ray ray) {
         var geoList = findGeoIntersections(ray);
         return geoList == null ? null : geoList.stream().map(gp -> gp.point).toList();
     }
@@ -71,7 +70,7 @@ public abstract class Intersectable {
      * @param ray the ray to check for intersections
      * @return a list of all intersections points
      */
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
+    public final List<GeoPoint> findGeoIntersections(Ray ray) {
         return findGeoIntersectionsHelper(ray);
     }
 

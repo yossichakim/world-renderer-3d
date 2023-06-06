@@ -53,6 +53,7 @@ public class Triangle extends Polygon {
         double s3 = alignZero(dir.dotProduct(n3));
         if (s1 * s3 <= 0) return null;
 
-        return List.of(new GeoPoint(this, intersection.get(0).point));
+        intersection.get(0).geometry = this;
+        return intersection;
     }
 }

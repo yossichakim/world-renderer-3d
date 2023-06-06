@@ -7,6 +7,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+/**
+ * Testing Ray
+ **/
 public class RayTests {
 
     /**
@@ -31,7 +34,7 @@ public class RayTests {
     }
 
     /**
-     * Test method for {@link primitives.Ray#findClosestPoint(List<Point>)}.
+     * Test method for {@link primitives.Ray#findClosestPoint(List Point)}.
      */
     @Test
     void testFindClosestPoint() {
