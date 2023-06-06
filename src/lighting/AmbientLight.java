@@ -1,8 +1,9 @@
 package lighting;
 
-import primitives.*;
+import primitives.Color;
+import primitives.Double3;
 
-/*
+/**
  * AmbientLight class represents an ambient light in a scene.
  */
 public class AmbientLight extends Light {

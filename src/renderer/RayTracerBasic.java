@@ -59,7 +59,7 @@ public class RayTracerBasic extends RayTracerBase {
         for (LightSource lightSource : scene.lights) {
             Vector lightVector = lightSource.getL(gp.point);
             double nl = alignZero(normal.dotProduct(lightVector));
-            if (nl * nv > 0) {
+            if (alignZero(nl * nv) > 0 ) {
                 Color lightIntensity = lightSource.getIntensity(gp.point);
                 color = color.add(lightIntensity.scale(calcDiffusive(material, nl)), lightIntensity.scale(calcSpecular(material, normal, lightVector, nl, vector)));
             }

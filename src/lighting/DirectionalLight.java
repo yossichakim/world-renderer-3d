@@ -1,7 +1,12 @@
 package lighting;
 
-import primitives.*;
+import primitives.Color;
+import primitives.Point;
+import primitives.Vector;
 
+/**
+ * DirectionalLight class represents a directional light in a scene.
+ */
 public class DirectionalLight extends Light implements LightSource{
 
     private final Vector direction;

@@ -1,9 +1,14 @@
 package lighting;
 
-import primitives.*;
+import primitives.Color;
+import primitives.Point;
+import primitives.Vector;
 
 import static primitives.Util.alignZero;
 
+/**
+ * SpotLight class represents a spot light in a scene.
+ */
 public class SpotLight extends PointLight{
     private final Vector direction;
 

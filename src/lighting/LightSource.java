@@ -1,7 +1,10 @@
 package lighting;
-import primitives.*;
 
-/*
+import primitives.Color;
+import primitives.Point;
+import primitives.Vector;
+
+/**
  * LightSource interface represents a light source in a scene.
  */
 public interface LightSource {
@@ -12,7 +15,7 @@ public interface LightSource {
      * @param p The point to get the intensity at.
      * @return The intensity of the light at the given point.
      */
-    public Color getIntensity(Point p);
+    Color getIntensity(Point p);
 
     /**
      * Returns the direction of the light at the given point.
@@ -20,7 +23,7 @@ public interface LightSource {
      * @param p The point to get the direction at.
      * @return The direction of the light at the given point.
      */
-    public Vector getL(Point p);
+    Vector getL(Point p);
 
     /**
      * returns the distance of the light source

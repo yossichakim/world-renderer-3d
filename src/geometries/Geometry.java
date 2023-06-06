@@ -53,8 +53,8 @@ public abstract class Geometry extends Intersectable {
     /**
      * Function will set the material of the geometry
      */
-    public Geometry setMaterial(Material _material) {
-        material = _material;
+    public Geometry setMaterial(Material material) {
+        this.material = material;
         return this;
     }
 

@@ -1,7 +1,12 @@
 package lighting;
 
-import primitives.*;
+import primitives.Color;
+import primitives.Point;
+import primitives.Vector;
 
+/**
+ * PointLight class represents a point light in a scene.
+ */
 public class PointLight extends Light implements LightSource{
     private final Point position;
     private double kC = 1;
@@ -55,8 +60,8 @@ public class PointLight extends Light implements LightSource{
 
     @Override
     public Color getIntensity(Point point) {
-        double d2 = position.distanceSquared(point);
-        return getIntensity().reduce(kC + kL * Math.sqrt(d2) + kQ * d2);
+        double dis = position.distanceSquared(point);
+        return getIntensity().reduce(kC + kL * Math.sqrt(dis) + kQ * dis);
     }
 
     @Override
