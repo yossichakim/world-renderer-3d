@@ -1,6 +1,6 @@
 # World Renderer 3D
 
-Java-based 3D world rendering project leveraging linear algebra for scene creation, object transformations and realistic camera projection. :contentReference[oaicite:0]{index=0}
+Java-based 3D world rendering project leveraging linear algebra for scene creation, object transformations and realistic camera projection.
 
 ## Features
 
@@ -8,17 +8,13 @@ Java-based 3D world rendering project leveraging linear algebra for scene creati
   Build complex scenes by composing objects in a hierarchical graph.
 
 - **Linear Algebra Core**  
-  Implements vector and matrix operations for transformations (translation, rotation, scaling). :contentReference[oaicite:1]{index=1}
+  Implements vector and matrix operations for transformations (translation, rotation, scaling).
 
 - **Realistic Camera Projection**  
-  Simulates perspective projection using configurable camera parameters (field of view, near/far planes). :contentReference[oaicite:2]{index=2}
+  Simulates perspective projection using configurable camera parameters (field of view, near/far planes).
 
 ## Tech Stack & Tools
 
-- **Language:** Java (100 % of codebase) :contentReference[oaicite:3]{index=3}  
-- **IDE:** IntelliJ IDEA project files included (`.idea/`, `*.iml`) :contentReference[oaicite:4]{index=4}  
-- **Version Control:** Git (`.gitignore` provided) :contentReference[oaicite:5]{index=5}  
-
-## Project Structure
-
-
+- **Language:** Java (100% of codebase)  
+- **IDE:** IntelliJ IDEA project files included (`.idea/`, `*.iml`)  
+- **Version Control:** Git (`.gitignore` provided)  
