@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ISE5783_8881_3341.iml" filepath="$PROJECT_DIR$/ISE5783_8881_3341.iml" />
+      <module fileurl="file://$PROJECT_DIR$/world-renderer-3d.iml" filepath="$PROJECT_DIR$/world-renderer-3d.iml" />
     </modules>
   </component>
 </project>
